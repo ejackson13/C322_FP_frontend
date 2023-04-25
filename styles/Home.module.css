@@ -1,0 +1,27 @@
+
+
+.main {
+    margin-top: 80px;
+    margin-left: 6.7%;
+}
+
+.table {
+    margin-top: 20px;
+    border-collapse:collapse;
+    width: 80%;
+}
+
+.table thead tr th {
+    padding: 12px;
+    vertical-align: top;
+    letter-spacing: 0.35px;
+    border: 1px solid black;
+    background-color: rgb(180, 180, 180);
+}
+
+.table tbody tr td{
+    letter-spacing: 0.35px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+}
