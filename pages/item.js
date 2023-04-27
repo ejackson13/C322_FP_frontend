@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Item.module.css'
 import Layout from '@/components/Layout'
@@ -13,47 +14,74 @@ export default function Home() {
 
     
     const router = useRouter();
-    const id = router.query;
+    const id = router.query.id;
     const [itemById, setItemById] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    useEffect((id) => {
-    viewingdata.itemById(id)
-        .then((data) => {
-        setItemById(data);
-        console.log(data);
-        })
-        .catch((e) => console.log(e));
-    }, []);
+    console.log(id)
+    console.log("localhost:8082/item/"+id);
+
+    useEffect(() => {
+        setLoading(true);
+        viewingdata.itemById(id)
+            .then((data) => {
+            setItemById(data);
+            setLoading(false);
+            console.log(data);
+            })
+            .catch((e) => console.log(e));
+        }, []);
 
 
-    return (
-        <>
-        <Head>
-            <title>itemById.name</title>
-            <meta name="View items available to rent" content="Demop" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+    if(loading)
+        return(
+            <>
+                <Head>
+                    <title>View Rentals</title>
+                    <meta name="View items available to rent" content="Demop" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
 
-        <Layout>
-        <div className={styles.main}>
-            <h1>{itemById.name}</h1>
-            <h2>Price: ${itemById.price}</h2>
-            <h3>Seller: {itemById.seller.sellerName}</h3>
-            <h3>Rating: {item.seller.sellerFeedback.sumOfSellerScores / item.seller.sellerFeedback.numOfSellerScores} </h3>
+                <Layout>
+                </Layout>
+                
+            </>
+        )
+    
+    else
+        return (
+            <>
+            <Head>
+                <title>{itemById.name}</title>
+                <meta name="View items available to rent" content="Demop" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
 
-            <br />
-            <p>{itemById.description}</p>
+            <Layout>
+            <div className={styles.main}>
+                <h1>{itemById.name}</h1>
+                <h2>Price: ${itemById.price}</h2>
+            
 
-            <br />
+                <br />
+                <p>{itemById.description}</p>
 
-            <Link href = {{pathname: "/order", query: itemById}}>
-                <button>Place Order</button>
-            </Link>
-        </div>
+                <br />
 
-    </Layout>
-        
-    </>
-  )
+                <Link href = {{pathname: "/order", query: itemById}}>
+                    <button>Place Order</button>
+                </Link>
+            </div>
+
+        </Layout>
+            
+        </>
+    )
 }
+
+/*
+<h3>Seller: {itemById.seller.sellerName}</h3>
+                <h3>Seller Rating: {itemById.seller.sellerFeedback.sumOfSellerScores/itemById.seller.sellerFeedback.numOfSellerScores}/5</h3>
+*/

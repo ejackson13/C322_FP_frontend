@@ -5,33 +5,64 @@ import styles from '@/styles/Home.module.css'
 import Layout from '@/components/Layout'
 import viewingdata from '@/data/viewingData'
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
+
   const [allItems, setAllItems] = useState([]);
   const [itemsByName, setItemsByName] = useState([]);
-  const [itemById, setItemById] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  let search = "NONE"
+  let param = new URLSearchParams();
 
   useEffect(() => {
-    viewingdata.allItems()
-      .then((data) => {
-        setAllItems(data);
-        console.log(data);
-      })
-      .catch((e) => console.log(e));
+    setLoading(true);
 
-    viewingdata.itemsByName()
-      .then((data) => {
-        setItemsByName(data);
-        console.log(data);
-      })
-      .catch((e) => console.log(e));
-  }, []);
+    if(search == "NONE") {
+      viewingdata.allItems()
+        .then((data) => {
+          setAllItems(data);
+          setLoading(false);
+          console.log(data);
+        })
+        .catch((e) => console.log(e));
+      }
+    else {
+      viewingdata.itemsByName(search)
+        .then((data) => {
+          setItemsByName(data);
+          setLoading(false);
+          console.log(data);
+        })
+        .catch((e) => console.log(e));
+      }
+    }, []);
+
+  
 
 
-  return (
+  if(loading)
+    return(
+      <>
+        <Head>
+          <title>View Rentals</title>
+          <meta name="View items available to rent" content="Demop" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+      <Layout>
+      </Layout>
+          
+      </>
+    )
+
+  else
+    return (
     <>
       <Head>
         <title>View Rentals</title>
@@ -56,13 +87,13 @@ export default function Home() {
               {allItems.map((item, i) => (
                 <tr key={i}>
                   <td data-label="Name">
-                    <Link href={{pathname: '/item', query: item.sellerItemId}}>
+                    <Link href={{pathname: '/item', query:{id:item.sellerItemId}}}>
                       {item.name}
                     </Link>
                   </td>
-                  <td data-label="Price">${item.price}</td>
+                  <td data-label="Price">${item.price.toFixed(2)}</td>
                   <td data-label="Number in Stock">{item.inventory}</td>
-                  <td data-label="Seller">{item.seller.sellerFeedback.sumOfSellerScores / item.seller.sellerFeedback.numOfSellerScores}</td>
+                  <td data-label="Seller">{item.seller.sellerName}</td>
                 </tr>
               ))}
             </tbody>
@@ -74,3 +105,10 @@ export default function Home() {
     </>
   )
 }
+
+
+/*
+<Link href={{pathname: '/item', query: item.sellerItemId}}>
+                      {item.name}
+                    </Link>
+*/

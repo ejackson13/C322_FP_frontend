@@ -1,6 +1,6 @@
 //let host = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
-let host = "http://localhost:8080";
+let host = "http://localhost:8082";
 
 let getAllAvailableItems = () => {
     return fetch(host)
@@ -13,10 +13,13 @@ let getItemsByName = (name) => {
 }
 
 let getItemById = (id) => {
-    return fetch(host + "/" + id)
+    console.log(host+"/item/"+id)
+    return fetch(host + "/item/" + id)
         .then(response =>
         {
-            if (response.status == 200 || response.status == 201) return response.json();
+            if (response.status == 200 || response.status == 201) {
+                 return response.json();
+            }
             return null;
         })
             .then(id => id)
