@@ -4,12 +4,35 @@ let host = "http://localhost:8082";
 
 let getAllAvailableItems = () => {
     return fetch(host)
-        .then(response => response.json()); 
+    .then(response =>
+        {
+            if (response.status == 200 || response.status == 201) {
+                 return response.json();
+            }
+            return null;
+        })
+            .then(id => id)
+            .catch(error => {
+                console.log(error);
+                return null;
+        }); 
 };
 
 let getItemsByName = (name) => {
+    console.log(host+"/"+name);
     return fetch(host + "/" + name)
-        .then(response => response.json());
+    .then(response =>
+        {
+            if (response.status == 200 || response.status == 201) {
+                 return response.json();
+            }
+            return null;
+        })
+            .then(id => id)
+            .catch(error => {
+                console.log(error);
+                return null;
+        });
 }
 
 let getItemById = (id) => {

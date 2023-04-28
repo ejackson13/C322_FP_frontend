@@ -62,8 +62,14 @@ export default function Home() {
             <Layout>
             <div className={styles.main}>
                 <h1>{itemById.name}</h1>
-                <h2>Price: ${itemById.price}</h2>
-            
+                {itemById.price ? <h2>Price: ${itemById.price.toFixed(2)}</h2> : null}
+                {itemById.seller ? <h3>Seller: {itemById.seller.sellerName}</h3> : null}
+                {itemById.seller ? 
+                    itemById.seller.sellerFeedback ? 
+                        itemById.seller.feedbackSeller.numOfSellerScores != 0 ?
+                            <h3>Seller Rating: {itemById.seller.feedbackSeller.sumOfSellerScores/itemById.seller.feedbackSeller.numOfSellerScores}/5</h3>
+                    : null : null : null
+                }
 
                 <br />
                 <p>{itemById.description}</p>
@@ -83,5 +89,5 @@ export default function Home() {
 
 /*
 <h3>Seller: {itemById.seller.sellerName}</h3>
-                <h3>Seller Rating: {itemById.seller.sellerFeedback.sumOfSellerScores/itemById.seller.sellerFeedback.numOfSellerScores}/5</h3>
+                <h3>Seller Rating: {itemById.seller.feedbackSeller.sumOfSellerScores/itemById.seller.feedbackSeller.numOfSellerScores}/5</h3>
 */

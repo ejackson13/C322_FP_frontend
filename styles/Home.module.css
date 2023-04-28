@@ -25,3 +25,7 @@
     text-align: center;
     border: 1px solid black;
 }
+
+.main li {
+    margin-left: 25px;
+}

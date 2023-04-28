@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <Link className={styles.logo} href="/">logo</Link>
+        <Link className={styles.logo} href="/">Rental Service</Link>
 
         <input type="checkbox" id="menu-bar" className={styles.menubar}></input>
         <label for="menu-bar">menu</label>
@@ -24,6 +24,9 @@ const NavBar = () => {
             </li>
             <li>
               <Link href="/order">View Rented Items</Link>
+            </li>
+            <li>
+              <Link href="/payment">View Previous Rentals</Link>
             </li>
           </ul>
         </nav>
