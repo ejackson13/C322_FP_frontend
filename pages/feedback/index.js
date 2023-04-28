@@ -20,17 +20,19 @@ export default function Feedback() {
     return (
         <Layout>
             <div className={styles.container}>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="id">Enter an ID:</label>
-                    <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={id}
-                    onChange={handleChange}
-                    />
-                    <button type="submit">Submit</button>
-                </form>
+                <div className={styles.content}>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="id" className={styles.labelText}>Enter an ID:</label>
+                        <input
+                        type="text"
+                        id="id"
+                        name="id"
+                        value={id}
+                        onChange={handleChange}
+                        />
+                        <button type="submit" className={styles.button}>Submit</button>
+                    </form>
+                </div>
             </div>
         </Layout>
     );

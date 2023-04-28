@@ -29,18 +29,20 @@ export default function Id() {
         <>
             <Layout>
                 <div className={styles.container}>
-                    <table>
-                        <thead>
-                            <th>ID</th>
-                            <th>Rating</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{feedbackById.feedbackSellerId}</td>
-                                <td>{feedbackById.rating}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className={styles.content}>
+                        <table className={styles.table}>
+                            <thead>
+                                <th className={styles.th}>ID</th>
+                                <th className={styles.th}>Rating</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className={styles.td}>{feedbackById.feedbackSellerId}</td>
+                                    <td className={styles.td}>{feedbackById.rating}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </Layout>
         </>

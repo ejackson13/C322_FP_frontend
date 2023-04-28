@@ -23,39 +23,41 @@ export default function CreateFeedback() {
         <>
             <Layout>
                 <div className={styles.container}>
-                    <h1>Add new feedback</h1>
-                    <form action="#" onSubmit={handleSubmit(save)}>
-                        <div>
+                    <div className={styles.content}>
+                        <h1 className={styles.h1}>Add new feedback</h1>
+                        <form action="#" onSubmit={handleSubmit(save)}>
                             <div>
-                                <label htmlFor="name">ID</label>
-                                <input type="number"
-                                    id="feedbackSellerId"
-                                    name="feedbackSellerId"
-                                    {...register('feedbackSellerId',
-                                        {required: true,
-                                                message: 'please enter an ID' })}
-                                    placeholder="Enter an ID"/>
+                                <div>
+                                    <label htmlFor="name" className={styles.text}>ID</label>
+                                    <input type="number"
+                                        id="feedbackSellerId"
+                                        name="feedbackSellerId"
+                                        {...register('feedbackSellerId',
+                                            {required: true,
+                                                    message: 'please enter an ID' })}
+                                        placeholder="Enter an ID" className={styles.formText}/>
+
+                                </div>
+
+                                <div>
+                                    <label htmlFor="email" className={styles.text}>Rating</label>
+                                    <input type="number"
+                                        id="rating"
+                                        name="rating"
+                                        {...register('rating',
+                                            {required: true,
+                                                message: 'please enter a rating' })}
+                                        placeholder="Enter a rating" className={styles.formText}/>
+                                </div>
+
 
                             </div>
 
                             <div>
-                                <label htmlFor="email">Rating</label>
-                                <input type="number"
-                                    id="rating"
-                                    name="rating"
-                                    {...register('rating',
-                                        {required: true,
-                                            message: 'please enter a rating' })}
-                                    placeholder="Enter a rating"/>
+                                <input type="submit" value="save" className={styles.button}></input>
                             </div>
-
-
-                        </div>
-
-                        <div>
-                            <input type="submit" value="save" ></input>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </Layout>
         </>
