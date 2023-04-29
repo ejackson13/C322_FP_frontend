@@ -57,7 +57,7 @@ export default function Home() {
 
             <Layout>
             <div className={styles.main}>
-                <h1>{itemById.name}</h1>
+                {itemById ? <h1>{itemById.name}</h1> : <p>Failed to load</p> }
                 {itemById.price ? <h2>Price: ${itemById.price.toFixed(2)}</h2> : null}
                 {itemById.seller ? <h3>Seller: {itemById.seller.sellerName}</h3> : null}
                 {itemById.seller ? 
@@ -69,13 +69,15 @@ export default function Home() {
 
                 <br />
                 <p>Description</p>
-                <p>{itemById.description}</p>
+                {itemById ? <p>{itemById.description}</p> : null}
 
                 <br />
 
+                {itemById ?
                 <Link href={`/orders/${id}`}>
                     <button>Place Order</button>
                 </Link>
+                : null}
             </div>
 
         </Layout>

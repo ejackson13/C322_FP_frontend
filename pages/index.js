@@ -116,7 +116,8 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {search == ''? 
+              {allItems || itemsByName ?
+              search == ''? 
               allItems.map((item, i) => (
                 <tr key={i}>
                   <td data-label="Name">
@@ -140,7 +141,7 @@ export default function Home() {
                 <td data-label="Number in Stock">{item.inventory}</td>
                 {item.seller ? <td data-label="Seller">{item.seller.sellerName}</td> : null}
               </tr>
-            ))}
+            )) : null}
             </tbody>
           </table>
       </div>

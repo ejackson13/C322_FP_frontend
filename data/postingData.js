@@ -1,5 +1,5 @@
 
-let host = "http://localhost:8085/list"
+let host = "https://c322fppostingservice-production.up.railway.app/list"
 
 let saveSellerItem = (sellerItem) => {
     return fetch(host, {

@@ -1,6 +1,6 @@
 //let host = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
-let host = "http://localhost:8083/payment";
+let host = "https://c322fppaymentservice-production.up.railway.app/payment";
 
 let getAllOrders = (type, userId) => {
     return fetch(host + "/" + type + "/" +userId)

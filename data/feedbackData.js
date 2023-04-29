@@ -1,5 +1,5 @@
 
-let host = "http://localhost:8081/feedback";
+let host = "https://c322fpfeedbackservice-production.up.railway.app/feedback";
 
 let getAllAvailableFeedback = () => {
     return fetch(host)
