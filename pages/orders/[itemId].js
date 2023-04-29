@@ -38,7 +38,7 @@ export default function OrderPage() {
       // Fetch the item and sellerId using the itemId
       const fetchItemAndSeller = async () => {
         try {
-          const itemResponse = await fetch(`http://localhost:8080/orders/item/${itemId}`);
+          const itemResponse = await fetch(`https://c322fporderservice-production.up.railway.app/orders/item/${itemId}`);
           const itemData = await itemResponse.json();
           console.log(itemData)
           console.log(itemData.sellerId)
@@ -105,7 +105,7 @@ export default function OrderPage() {
     // Send the order data to your API for processing and storing in the database
     try {
 
-      const response = await fetch('http://localhost:8080/orders', {
+      const response = await fetch('https://c322fporderservice-production.up.railway.app/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

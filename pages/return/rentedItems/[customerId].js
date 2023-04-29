@@ -10,7 +10,7 @@ export default function RentedItems() {
 
   useEffect(() => {
     if (customerId) {
-      fetch(`http://localhost:8082/return/rentedItems/${customerId}`)
+      fetch(`https://c322fpreturnservice-production.up.railway.app/return/rentedItems/${customerId}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);

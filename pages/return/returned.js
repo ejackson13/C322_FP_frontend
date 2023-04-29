@@ -10,7 +10,7 @@ export default function Returned() {
 
   useEffect(() => {
     if (customerId && itemId) {
-      fetch(`http://localhost:8082/return/returned/${customerId}/${itemId}`)
+      fetch(`https://c322fpreturnservice-production.up.railway.app/return/returned/${customerId}/${itemId}`)
         .then((response) => response.json())
         .then((data) => setReceipt(data));
     }

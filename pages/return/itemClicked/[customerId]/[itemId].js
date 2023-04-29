@@ -14,7 +14,7 @@ export default function ItemClicked() {
 
   useEffect(() => {
     if (customerId && itemId) {
-      fetch(`http://localhost:8082/return/itemClicked/${customerId}/${itemId}`)
+      fetch(`https://c322fpreturnservice-production.up.railway.app//return/itemClicked/${customerId}/${itemId}`)
         .then((response) => response.json())
         .then((data) => setRentedItem(data));
     }
