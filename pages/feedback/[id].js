@@ -13,42 +13,37 @@ export default function Id() {
     console.log(id)
 
     useEffect(() => {
-        if(id=="undefined" || isNaN(idInt)) {
-            setFeedbackById(null)
-        } else {
             feedbackData.feedbackById(idInt)
                 .then((data) => {
                     setFeedbackById(data)
                     console.log(data)
                 })
                 .catch((e) => console.log(e));
-            }
     }, [])
 
     
-
-    if (feedbackById === null) {
-        return <div>Loading...</div>;
-    }
     return (
         <>
             <Layout>
-                <div className={styles.container}>
-                    <div className={styles.content}>
-                        <table className={styles.table}>
-                            <thead>
-                                <th className={styles.th}>ID</th>
-                                <th className={styles.th}>Rating</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className={styles.td}>{feedbackById.feedbackSellerId}</td>
-                                    <td className={styles.td}>{feedbackById.rating}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                {feedbackById ?
+                    <div className={styles.container}>
+                        <div className={styles.content}>
+                            <table className={styles.table}>
+                                <thead>
+                                    <th className={styles.th}>ID</th>
+                                    <th className={styles.th}>Rating</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className={styles.td}>{feedbackById.feedbackSellerId}</td>
+                                        <td className={styles.td}>{feedbackById.rating}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                    : <div className={styles.container}><div className={styles.content}>Feedback not found</div></div>
+                    }
             </Layout>
         </>
     )
