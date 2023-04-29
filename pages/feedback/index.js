@@ -10,7 +10,7 @@ export default function Feedback() {
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      router.push(`http://localhost:3000/feedback/${id}`);
+      router.push(`/feedback/${id}`);
     };
   
     const handleChange = (event) => {
