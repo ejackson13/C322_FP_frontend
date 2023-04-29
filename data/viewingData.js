@@ -1,8 +1,10 @@
 //let host = process.env.NEXT_PUBLIC_BACKEND_HOST;
+//need
 
 let host = process.env.VIEWING_HOST;
 
 let getAllAvailableItems = () => {
+    
     return fetch(host)
     .then(response =>
         {
