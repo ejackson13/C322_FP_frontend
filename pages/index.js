@@ -86,60 +86,6 @@ export default function Home() {
     )
 
 
-/*
-else if(search != '')
-    return(
-    <>
-      <Head>
-        <title>View Rentals</title>
-        <meta name="View items available to rent" content="Demop" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-    <Layout>
-      <div className={styles.main}>
-        <h1>Available Rentals</h1>
-
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Search"/>
-            <button type="submit">Search</button>
-        </form>
-
-        <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Number in Stock</th>
-                <th>Seller Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              {itemsByName.map((item, i) => (
-                <tr key={i}>
-                  <td data-label="Name">
-                    <Link href={{pathname: '/item', query:{id:item.sellerItemId}}}>
-                      {item.name}
-                    </Link>
-                  </td>
-                  {item.price ? <td data-label="Price">${item.price.toFixed(2)}</td> : null}
-                  <td data-label="Number in Stock">{item.inventory}</td>
-                  {item.seller ? <td data-label="Seller">{item.seller.sellerName}</td> : null}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-      </div>
-
-    </Layout>
-        
-    </>
-    )
-*/
-
-
-
 
   else
     return (
@@ -166,7 +112,7 @@ else if(search != '')
                 <th>Name</th>
                 <th>Price</th>
                 <th>Number in Stock</th>
-                <th>Seller Rating</th>
+                <th>Seller</th>
               </tr>
             </thead>
             <tbody>

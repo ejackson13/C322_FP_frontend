@@ -2,20 +2,24 @@ import Layout from "../../components/Layout"
 import styles from "../../styles/list.module.css"
 import { useForm } from 'react-hook-form';
 import postingData from '../../data/postingData'
+import { useRouter } from 'next/router'
 
 export default function List() {
 
     const { register, handleSubmit, errors, reset } = useForm();
+    const router = useRouter();
 
     let save = async (values) => {
 
         console.log(values);
         const response = await postingData.saveSellerItem(values);
         console.log(response);
-        if(response != null){
-            reset();
-
-        }
+        if (response.ok) {
+            alert('Order submitted successfully');
+            router.push('/');
+          } else {
+            alert('Error submitting the order');
+          }
 
     }
 

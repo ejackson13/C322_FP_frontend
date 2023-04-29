@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "../styles/NavBar.module.css";
 import Link from "next/link";
 
+// adapted from example NavBar class
+
 const NavBar = () => {
   return (
     <>
@@ -23,10 +25,10 @@ const NavBar = () => {
               <Link href="/feedback">View Feedback</Link>
             </li>
             <li>
-              <Link href="/order">View Rented Items</Link>
+              <Link href="/return">View Items Rented</Link>
             </li>
             <li>
-              <Link href="/payment">View Previous Rentals</Link>
+              <Link href="/payment">View Order History</Link>
             </li>
           </ul>
         </nav>

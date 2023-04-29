@@ -1,5 +1,5 @@
 
-let host = "http://localhost:8080/list"
+let host = "http://localhost:8085/list"
 
 let saveSellerItem = (sellerItem) => {
     return fetch(host, {
@@ -15,15 +15,20 @@ let saveSellerItem = (sellerItem) => {
             description: sellerItem.description
         })
     }).then(response =>
+        {
+            return response;
+        });
+    /*    
     {
-        if (response.status == 200 || response.status == 201) return response.json();
+        if (response.status == 200 || response.status == 201) return response;
         return null;
     })
         .then(id => id)
         .catch(error => {
             console.log(error);
-            return null;
+            return error;
         });
+        */
 }
 
 let postingData = {

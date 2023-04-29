@@ -9,22 +9,27 @@ export default function Id() {
     const { id } = router.query;
     const idInt = parseInt(id);
 
-    if (typeof id === "undefined" || isNaN(idInt)) {
-        return <div>Loading...</div>;
-    }
-
     const [feedbackById, setFeedbackById] = useState([]);
     console.log(id)
 
     useEffect(() => {
-        feedbackData.feedbackById(idInt)
-            .then((data) => {
-                setFeedbackById(data)
-                console.log(data)
-            })
-            .catch((e) => console.log(e));
+        if(id=="undefined" || isNaN(idInt)) {
+            setFeedbackById(null)
+        } else {
+            feedbackData.feedbackById(idInt)
+                .then((data) => {
+                    setFeedbackById(data)
+                    console.log(data)
+                })
+                .catch((e) => console.log(e));
+            }
     }, [])
 
+    
+
+    if (feedbackById === null) {
+        return <div>Loading...</div>;
+    }
     return (
         <>
             <Layout>

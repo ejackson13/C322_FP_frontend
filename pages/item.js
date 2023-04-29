@@ -37,9 +37,7 @@ export default function Home() {
         return(
             <>
                 <Head>
-                    <title>View Rentals</title>
-                    <meta name="View items available to rent" content="Demop" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <title>Item</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
 
@@ -53,9 +51,7 @@ export default function Home() {
         return (
             <>
             <Head>
-                <title>{itemById.name}</title>
-                <meta name="View items available to rent" content="Demop" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>Item</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -65,18 +61,19 @@ export default function Home() {
                 {itemById.price ? <h2>Price: ${itemById.price.toFixed(2)}</h2> : null}
                 {itemById.seller ? <h3>Seller: {itemById.seller.sellerName}</h3> : null}
                 {itemById.seller ? 
-                    itemById.seller.sellerFeedback ? 
+                    itemById.seller.feedbackSeller ? 
                         itemById.seller.feedbackSeller.numOfSellerScores != 0 ?
-                            <h3>Seller Rating: {itemById.seller.feedbackSeller.sumOfSellerScores/itemById.seller.feedbackSeller.numOfSellerScores}/5</h3>
+                            <h3>Seller Rating: {(itemById.seller.feedbackSeller.sumOfSellerScores/itemById.seller.feedbackSeller.numOfSellerScores).toFixed(1)}/5</h3>
                     : null : null : null
                 }
 
                 <br />
+                <p>Description</p>
                 <p>{itemById.description}</p>
 
                 <br />
 
-                <Link href = {{pathname: "/order", query: itemById}}>
+                <Link href={`/orders/${id}`}>
                     <button>Place Order</button>
                 </Link>
             </div>
@@ -84,6 +81,8 @@ export default function Home() {
         </Layout>
             
         </>
+    
+
     )
 }
 

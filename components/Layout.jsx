@@ -1,6 +1,6 @@
-import Footer from "./Footer";
 import NavBar from "./NavBar";
 
+// adapted from example Layout class
 
 const Layout = ({children}) => {
     
@@ -8,7 +8,6 @@ const Layout = ({children}) => {
         <>
          <NavBar />
          {children}
-         <Footer />
         </>
     )
 }

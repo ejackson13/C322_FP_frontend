@@ -37,7 +37,7 @@ export default function Home() {
             </Head>
 
             <Layout>
-                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <div className={styles.main}>
                 <h1>Enter your information</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="drop">Are you a customer or a seller?</label> <br/>
@@ -54,6 +54,7 @@ export default function Home() {
                     <br/> <br/>
                     <button type="submit">View Orders</button>
                 </form>
+                </div>
             </Layout>
         </>
     )

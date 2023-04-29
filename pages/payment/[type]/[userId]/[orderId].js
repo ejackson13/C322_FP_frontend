@@ -65,14 +65,13 @@ export default function Home() {
 
             <Layout>
             <div className={styles.main}>
-                <br/><br/><br/><br/><br/><br/><br/><br/>
                 <h2>Order {orderId}</h2>
                 {summary != null ?
                     <ul>
                         {summary.dateRented ? <li>Date rented: {summary.dateRented}</li> : null}
                         {summary.dateReturned ? <li>Date returned: {summary.dateReturned}</li> : null}
-                        {summary.basePrice ? <li>Base Price: {summary.basePrice}</li> : null}
-                        {summary.lateFees ? <li>Late Fees: {summary.lateFees}</li> : null}
+                        {summary.basePrice ? <li>Base Price: ${summary.basePrice.toFixed(2)}</li> : null}
+                        {summary.lateFees ? <li>Late Fees: ${summary.lateFees.toFixed(2)}</li> : null}
                         {type=="customer" ? 
                             summary.shippedTo ? <li>Shipped To: {summary.shippedTo.street}, {summary.shippedTo.city}, {summary.shippedTo.state}, {summary.shippedTo.postalCode}</li>
                                 : null
@@ -81,13 +80,13 @@ export default function Home() {
                                 : null
                         }
                         {type=="seller" ? 
-                            summary.siteFee ? <li>Site Fee: {summary.siteFee}</li> : null
+                            summary.siteFee ? <li>Site Fee: ${summary.siteFee.toFixed(2)}</li> : null
                             : null
                         }
                         {type=="customer" ? 
-                            summary.totalCost ? <li>Total Cost: {summary.totalCost}</li> : null
+                            summary.totalCost ? <li>Total Cost: ${summary.totalCost.toFixed(2)}</li> : null
                             :
-                            summary.profit ? <li>Profit: {summary.profit}</li> : null
+                            summary.profit ? <li>Profit: ${summary.profit.toFixed(2)}</li> : null
                         }   
                     </ul>
                     : <p>Error loading data</p>

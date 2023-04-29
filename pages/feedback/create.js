@@ -11,10 +11,12 @@ export default function CreateFeedback() {
         console.log(values);
         const response = await feedbackData.saveFeedback(values);
         console.log(response);
-        if(response != null){
-            reset();
-
-        }
+        if (response.ok) {
+            alert('Order submitted successfully');
+            router.push('/');
+          } else {
+            alert('Error submitting the order');
+          }
 
     }
 

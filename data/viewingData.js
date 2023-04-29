@@ -1,6 +1,6 @@
 //let host = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
-let host = "http://localhost:8082";
+let host = "https://c322fpviewingservice-production.up.railway.app";
 
 let getAllAvailableItems = () => {
     return fetch(host)
