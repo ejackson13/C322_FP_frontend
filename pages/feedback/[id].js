@@ -9,7 +9,7 @@ export default function Id() {
     const { id } = router.query;
     const idInt = parseInt(id);
 
-    const [feedbackById, setFeedbackById] = useState([]);
+    const [feedbackById, setFeedbackById] = useState([null]);
     console.log(id)
 
     useEffect(() => {
@@ -29,13 +29,15 @@ export default function Id() {
                         <div className={styles.content}>
                             <table className={styles.table}>
                                 <thead>
+                                    <tr>
                                     <th className={styles.th}>ID</th>
                                     <th className={styles.th}>Rating</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        {feedbackById ? <td className={styles.td}>{feedbackById.feedbackSellerId}</td> : <tr></tr>}
-                                        {feedbackById ? <td className={styles.td}>{feedbackById.rating}</td> : <tr></tr>}
+                                        {feedbackById ? <td className={styles.td}>{feedbackById.feedbackSellerId}</td> : <td></td>}
+                                        {feedbackById ? <td className={styles.td}>{feedbackById.rating}</td> : <td></td>}
                                     </tr>
                                 </tbody>
                             </table>
