@@ -25,7 +25,6 @@ export default function Id() {
     return (
         <>
             <Layout>
-                {feedbackById ?
                     <div className={styles.container}>
                         <div className={styles.content}>
                             <table className={styles.table}>
@@ -35,15 +34,13 @@ export default function Id() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td className={styles.td}>{feedbackById.feedbackSellerId}</td>
-                                        <td className={styles.td}>{feedbackById.rating}</td>
+                                        {feedbackById ? <td className={styles.td}>{feedbackById.feedbackSellerId}</td> : <tr></tr>}
+                                        {feedbackById ? <td className={styles.td}>{feedbackById.rating}</td> : <tr></tr>}
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    : <div className={styles.container}><div className={styles.content}>Feedback not found</div></div>
-                    }
             </Layout>
         </>
     )
